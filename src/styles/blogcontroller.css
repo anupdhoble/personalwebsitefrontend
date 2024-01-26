@@ -1,0 +1,80 @@
+
+.BlogController{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.blog-controller-ul{
+    
+    background-color: var(--color2);
+    padding-inline-start: 0;
+    border-radius: 5px;
+    margin:7px 2px;
+    padding: 5px 10px;
+    width: auto;
+    display: flex;
+    gap: 15vw;
+    list-style: none;
+    justify-content: space-between;
+    
+}
+.blog-controller-ul a{
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color5);
+}
+.loginPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 73vh;
+}
+.login-with-google-btn{
+    width: 40vw;
+    font-size: larger;
+    margin: 25px;
+
+}
+.cpContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.inputGp input{
+    width: 40vw;
+    color: var(--color5);
+    background-color: var(--color2);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: large;
+}
+.inputGp textarea{
+    color: var(--color5);
+    width: 40vw;
+    height: 20vh;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.cpContainer button{
+    font-size: large;
+}
+
+@media(max-width:992px){
+    .blog-controller-ul{
+        width: auto;
+    }
+    .inputGp input{
+        width: 50vw;
+    }
+    .inputGp textarea{
+        width: 50vw;
+    }
+}

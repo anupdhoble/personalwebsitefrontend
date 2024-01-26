@@ -1,0 +1,24 @@
+.user-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    font-size: x-large;
+}
+.user-avatar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+.user-avatar img{
+    height: 20vh;
+    border-radius: 20px;
+}
+.user-details{
+    margin-top:50px ;
+}
+.signOutBtn{
+    font-size: 1.3rem;
+}

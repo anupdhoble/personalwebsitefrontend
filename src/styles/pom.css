@@ -1,0 +1,24 @@
+.pomImage{
+    border-radius:10px;
+    width:40vw;
+}
+.page404{
+    border-radius:10px;
+    width:30vw;
+    margin: 10px;
+}
+
+#music-master{
+    width:auto;
+    display: flex;
+    flex-direction: column; 
+    
+    align-items: center;
+    min-height: 100vh;
+}
+
+@media(max-width:992px) {
+    .pomImage{
+        width: 90vw;
+    }
+}
