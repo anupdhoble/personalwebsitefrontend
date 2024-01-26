@@ -1,0 +1,10 @@
+button{
+    background-color: var(--color2);
+    border-radius: 5px;
+    border-color: var(--color1);
+    border-width: 1px;
+    color: var(--color5);
+}
+a :hover{
+    cursor:pointer;
+}
