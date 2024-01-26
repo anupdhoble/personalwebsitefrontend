@@ -32,9 +32,9 @@ export default function Header({isNavbarActive,toggleNavbar,closeTheMenu}) {
                     <i className="fa-solid fa-xmark" style={{ color: '#05386b' }}></i>
                 </div>
             </nav>
-            <div className="hr-nav m-auto">
+            {/* <div className="hr-nav m-auto">
                 <hr />
-            </div>
+            </div> */}
         </>
     );
 }

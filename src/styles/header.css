@@ -10,3 +10,74 @@
 .navbar li a.highlightNavoption{
     color: var(--color5);
 }
+.navbar {
+    background-color: var(--color3);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar span {
+    font-family: var(--font2);
+    color: var(--color2);
+    font-weight: 600;
+    font-size: larger;
+}
+
+.navbar ul {
+    overflow: auto;
+    margin: 2px 2px;
+}
+
+.navbar li {
+    float: left;
+    list-style: none;
+    margin: 13px 20px;
+}
+
+.navbar li a {
+    padding: 3px 3px;
+    text-decoration: none;
+    color: var(--color1);
+    font-size: 1.4em;
+    font-family: var(--font2);
+    font-weight: 600;
+    animation: ease-in-out;
+}
+
+
+.navbar li a:hover {
+    padding: 3px 3px;
+    text-decoration: none;
+    color: var(--color5);
+    transition: 0.3s ease-in-out;
+   
+}
+
+#logo {
+    width: 62px;
+    padding: 0px 15px;
+    margin: 0px 0px;
+}
+
+.nav-right {
+    color: var(--color3);
+    margin-left: auto;
+    padding: 12px 20px;
+}
+
+
+.nav-magnicon {
+    margin-left:3px;
+    width: 5px;
+    color: var(--color1);
+    margin-top: 2px;
+}
+
+.nav-magnicon:hover {
+
+    width: 5px;
+    color: var(--color5);
+    transition: 0.3s ease-in-out;
+}

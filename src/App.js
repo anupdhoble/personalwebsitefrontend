@@ -34,7 +34,7 @@ function App() {
   })
 
   return (
-    <div className='wrapper'>
+    
       
     <Router>
       <Header isNavbarActive={isNavbarActive} toggleNavbar={toggleNavbar} closeTheMenu={closeTheMenu}/>
@@ -52,7 +52,7 @@ function App() {
       </Routes>
       <Footer isNavbarActive={isNavbarActive} toggleNavbar={toggleNavbar} />
     </Router>
-    </div>
+    
   );
 }
 

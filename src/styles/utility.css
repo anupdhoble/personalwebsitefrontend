@@ -8,3 +8,6 @@ button{
 a :hover{
     cursor:pointer;
 }
+.footercorrect{
+    min-height: 80vh;
+}

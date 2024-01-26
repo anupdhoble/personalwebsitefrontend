@@ -8,7 +8,7 @@ function Projects() {
     ];
 
     return (
-        <div>
+        <div className='footercorrect'>
             <h2>Projects</h2>
             <ul>
                 {projects.map(project => (
