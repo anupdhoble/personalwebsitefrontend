@@ -16,7 +16,7 @@ export default function CreateBlog({ isLogin }) {
     const handleSubmit = async () => {
         if (title !== "" && blogContent !== "") {
             try {
-                const url ="http://192.168.0.104:5000/blogs/create";
+                const url ="https://anuppersonalwebsitebackend.azurewebsites.net/blogs/create";
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: {

@@ -11,7 +11,7 @@ const Blogs = ({ isLogin }) => {
 
     const fetchAllBlogs = async () => {
         try {
-            const url = "http://192.168.0.104:5000/blogs/getAll"; // Correct endpoint
+            const url = "https://anuppersonalwebsitebackend.azurewebsites.net/blogs/getAll"; // Correct endpoint
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
