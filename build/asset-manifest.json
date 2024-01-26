@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ead71df6.css",
+    "main.js": "/static/js/main.81347d9b.js",
+    "static/js/787.c6af9339.chunk.js": "/static/js/787.c6af9339.chunk.js",
+    "static/media/maintainence.gif": "/static/media/maintainence.1850905027631ceb8d4f.gif",
+    "static/media/Dreamer-AlanWalker-NCS.mp3": "/static/media/Dreamer-AlanWalker-NCS.8b90df2ac69e8002d78c.mp3",
+    "static/media/404.jpg": "/static/media/404.291c471e5ac5782df46c.jpg",
+    "static/media/blogPageImg.png": "/static/media/blogPageImg.e2af03d37fa9d3c4134e.png",
+    "static/media/anup.png": "/static/media/anup.a5888f2c5cf4a1ce3a11.png",
+    "static/media/logo.ico": "/static/media/logo.a24c2ac2d896cee9db9e.ico",
+    "index.html": "/index.html",
+    "main.ead71df6.css.map": "/static/css/main.ead71df6.css.map",
+    "main.81347d9b.js.map": "/static/js/main.81347d9b.js.map",
+    "787.c6af9339.chunk.js.map": "/static/js/787.c6af9339.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ead71df6.css",
+    "static/js/main.81347d9b.js"
+  ]
+}
