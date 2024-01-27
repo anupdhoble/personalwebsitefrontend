@@ -12,6 +12,10 @@ export default function Home({ isLogin }) {
         window.scrollTo(0, 0);
         navigate('/contact');
     }
+    const handleResume = () => {
+        window.scrollTo(0, 0);
+        window.open('https://drive.google.com/file/d/1T9UODbA1qwWFf2YT_3TorJxVOMWQkmDg/view?usp=sharing', '_blank');
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -32,6 +36,9 @@ export default function Home({ isLogin }) {
                 <div className="home_right">
                     <img src={photo} alt="" />
                 </div>
+            </div>
+            <div onClick={handleResume} className="resumebutton">
+                <div>Resume</div>
             </div>
             <div  onClick={handleContact} className="contactbutton">
                 <div>Contact Me</div>

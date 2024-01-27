@@ -21,8 +21,8 @@
 .home_right img{
     width: 450px;
 }
-.contactbutton{
-    margin: auto;
+.contactbutton,.resumebutton{
+    margin: 5px auto 5px auto;
     background-color: var(--color1);
     color: var(--color5);
     width: 8vw;
@@ -34,7 +34,7 @@
     border: 2px solid var(--color1);
     text-decoration: none;
 }
-.contactbutton:hover{
+.contactbutton:hover,.resumebutton:hover{
     background-color: var(--color3);
     color: var(--color1);
     transition: 0.3s ease-in-out;
