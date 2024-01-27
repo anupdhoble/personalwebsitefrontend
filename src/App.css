@@ -11,7 +11,7 @@
     --color3: #5CDB95;
     --color4: #8EE4AF;
     --color5: #EDF5E1;
-}
+}/* swap color3 to color1 for dark mode */
 button:hover{
     cursor: pointer;
 }
@@ -30,6 +30,9 @@ body::-webkit-scrollbar {
 html{
     overflow-x: hidden;
     
+}
+html::-webkit-scrollbar{
+    display: none;
 }
 /* Hide scrollbar for IE, Edge and Firefox */
 body {
