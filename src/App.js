@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
 import About from './components/About';
-
+import { Helmet } from 'react-helmet';
 import Contact from './components/Contact';
 import Blogs from './components/Blogs';
 import Bloglogin from './components/Bloglogin';
@@ -37,6 +37,9 @@ function App() {
     
       
     <Router>
+      <Helmet>
+        <title>Anup Dhoble || Portfolio</title>
+      </Helmet>
       <Header isNavbarActive={isNavbarActive} toggleNavbar={toggleNavbar} closeTheMenu={closeTheMenu}/>
       <Routes>
         {/* Define your routes here */}
