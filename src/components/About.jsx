@@ -24,10 +24,10 @@ export default function About() {
             <li>Frontend:- Netlify</li>
             <li>Backend:- AWS,EC2 Instance</li>
         </ul>
-        <h1 className="titles">Disclaimer</h1>
+        {/* <h1 className="titles">Disclaimer</h1>
         <h2 className="disclaimer">A fun project to test my skills. <br/>All rights of songs and logos are reserverd with
             respective parties.<br/>We respect your copyrights and would like to here out issues(if any).
-        </h2>
+        </h2> */}
         <h1 className="titles">Services used:</h1>
         <a href="https://www.vecteezy.com/" target="_blank" rel="noreferrer">vecteezy.com</a>
         <br/>
