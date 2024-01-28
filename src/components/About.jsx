@@ -6,14 +6,14 @@ export default function About() {
         <div id="pagecontent">
         <h1 className="titles">Technologies Used:</h1>
         <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>Javascript</li>
-            <li>ReactJs</li>
+            <li>React</li>
+            <li>Node.js</li>
             <li>Firebase</li>
+            <li>Mongodb</li>
+            <li>Express.js</li>
         </ul>
         <h1 className="titles">Made By:</h1>
-        <center><img src={anup} alt="" id="anup"/></center>
+       
         <ul>
             <li>Anup Dhoble</li>
             <li><a href="https://www.instagram.com/anup_dhoble/" target="_blank" rel="noreferrer">@anupdhoble15</a></li>
@@ -22,7 +22,8 @@ export default function About() {
         </ul>
         <h1 className="titles">Hosted On:</h1>
         <ul>
-            <li>Github Pages (27/11/2022)</li>
+            <li>Frontend:- Netlify</li>
+            <li>Backend:- AWS,EC2 Instance</li>
         </ul>
         <h1 className="titles">Disclaimer</h1>
         <h2 className="disclaimer">A fun project to test my skills. <br/>All rights of songs and logos are reserverd with
