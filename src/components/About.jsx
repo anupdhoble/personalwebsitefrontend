@@ -1,5 +1,4 @@
 import '../styles/about.css';
-import anup from "../assets/img/anup.png";
 export default function About() {
     return(
         <>
