@@ -1,0 +1,33 @@
+.resumecontainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.resumecontainer embed{
+    border-radius: 10px;
+}
+.resumebutton{
+    margin: 5px auto 5px auto;
+    background-color: var(--color1);
+    color: var(--color5);
+    width: 8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--color1);
+    text-decoration: none;
+}
+.resumebutton:hover{
+    background-color: var(--color3);
+    color: var(--color1);
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    border: 2px solid var(--color1);
+}
+@media(max-width:992px){
+    .resumebutton{
+        width: 15vw;
+    }
+}

@@ -13,6 +13,7 @@ import Bloglogin from './components/Bloglogin';
 import CreateBlog from './components/CreateBlog';
 import Projects from './components/Projects';
 import POM from './components/POM';
+import Resume from './components/Resume';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path="/about" element={<About/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/projects" element={<Projects />}/>
+        <Route path="/resume" element={<Resume />}/>
         <Route path="/blogs" element={<Blogs isLogin={isLogin}/>}/>
         <Route path="/blogs/login" element={<Bloglogin isLogin={isLogin} setIsLogin={setIsLogin}/>}/>
         <Route path="/blogs/create" element={<CreateBlog isLogin={isLogin}/>}/>
