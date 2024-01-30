@@ -15,7 +15,7 @@ export default function About() {
        
         <ul>
             <li>Anup Dhoble</li>
-            <li><a href="https://www.instagram.com/anup_dhoble/" target="_blank" rel="noreferrer">@anupdhoble15</a></li>
+            <li><a href="https://www.instagram.com/anup_dhoble/" target="_blank" rel="noreferrer">@anup_dhoble</a></li>
             <li>anupdhoble@gmail.com</li>
             <li>Second Year CSE Student At Shri Ramdeobaba College OF Engineering Nagpur.</li>
         </ul>
