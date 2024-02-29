@@ -16,7 +16,10 @@ import POM from './components/POM';
 import Resume from './components/Resume';
 
 
+
+
 function App() {
+  // dotenv.config();
   const [isNavbarActive, setIsNavbarActive] = useState(false);
   const [isLogin,setIsLogin]=useState(localStorage.getItem("isLogin"));
 
