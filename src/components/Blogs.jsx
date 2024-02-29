@@ -11,7 +11,7 @@ const Blogs = ({ isLogin }) => {
 
     const fetchAllBlogs = async () => {
         try {
-            const url = "https://personalsitebackend.azurewebsites.net/blogs/getAll"; // Correct endpoint
+            const url = "https://personalwebsitebackend.onrender.com/blogs/getAll"; // Correct endpoint
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {

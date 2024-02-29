@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import '../styles/bloglogin.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+// https://personalsitebackend.azurewebsites.net
 
 export default function CreateBlog({ isLogin }) {
 
@@ -16,7 +17,7 @@ export default function CreateBlog({ isLogin }) {
     const handleSubmit = async () => {
         if (title !== "" && blogContent !== "") {
             try {
-                const url ="https://personalsitebackend.azurewebsites.net/blogs/create";
+                const url ="https://personalwebsitebackend.onrender.com/blogs/create";
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: {
