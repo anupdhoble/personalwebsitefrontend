@@ -1,23 +1,56 @@
 import { useEffect, useState } from "react";
 import BlogController from "./BlogController";
-import { auth} from '../firebaseConfig';
+
+import { auth, storage } from '../firebaseConfig';
 import { useNavigate } from "react-router-dom";
+import { getDownloadURL, ref, uploadBytes,deleteObject } from 'firebase/storage';
 import '../styles/bloglogin.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-// https://personalsitebackend.azurewebsites.net
+import "firebase/compat/storage";
 
 export default function CreateBlog({ isLogin }) {
 
+
+    const storageRef = ref(storage);
+    const [imgurl, setImgurl] = useState("");
+    const [file, setFile] = useState(null);
+
     const [title, setTitle] = useState("");
     const [blogContent, setBlogContent] = useState("");
-
+    const [imgloc, setImgloc] = useState("");
     const navigate = useNavigate();
 
+    const handleChange = (e) => {
+        toast.info("Uploading please wait...");
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {//this is done to avoid error if we click on upload and close explorer without selecting any file
+            //In case of reupload , first delete the previous image
+            if(file!==null){
+                deleteObject(ref(storageRef, `blogs/${file.name}`)).then(() => {
+                    console.log("Image deleted");
+                }).catch((error) => {
+                    console.error("Error deleting previous image:", error);
+                });
+            }
+            setFile(selectedFile);
+            const imageRef = ref(storageRef, `blogs/${selectedFile.name}`);
+            setImgloc(`blogs/${selectedFile.name}`);
+            console.log("Uploading new image...");
+            uploadBytes(imageRef, selectedFile).then(async (snapshot) => {
+                console.log('Uploaded image');
+                const url = await getDownloadURL(imageRef);
+                setImgurl(url);
+                console.log('File available at', url);
+                toast.success("Image uploaded successfully");
+
+            });
+        }
+    }
     const handleSubmit = async () => {
         if (title !== "" && blogContent !== "") {
             try {
-                const url ="https://personalwebsitebackend.onrender.com/blogs/create";
+                const url = "https://personalwebsitebackend.onrender.com/blogs/create";
                 const response = await fetch(url, {
                     method: 'POST',
                     headers: {
@@ -27,7 +60,9 @@ export default function CreateBlog({ isLogin }) {
                         uid: auth.currentUser.uid,
                         title: title,
                         content: blogContent,
-                        author: auth.currentUser.displayName
+                        author: auth.currentUser.displayName,
+                        imgUrl: imgurl,
+                        imgRefToFirebase: imgloc
                     })
                 });
 
@@ -57,6 +92,7 @@ export default function CreateBlog({ isLogin }) {
     })
 
 
+
     return (
         <div className="footer-fix">
             <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
@@ -76,7 +112,16 @@ export default function CreateBlog({ isLogin }) {
                             setBlogContent(event.target.value);
                         }}></textarea>
                     </div>
-                    <button onClick={handleSubmit}>Submit</button>
+                    <input type="file" onChange={handleChange} accept="image/*" />
+                    
+                    {imgurl &&
+                    <div>
+                        <p>Image preview</p>
+                        <img className="imagePreview" src={imgurl} alt="blog_image" />
+                    </div>
+                    }
+                    <button onClick={(e) => { handleSubmit(e) }}>Submit</button>
+
                 </div>
             </div>
         </div>

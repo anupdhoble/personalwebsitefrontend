@@ -83,6 +83,7 @@ h1,p{
     margin-bottom: 2rem;;
     
 }
+
 .article-header{
     display:flex;
     height:auto;
@@ -105,6 +106,17 @@ h1,p{
     color: var(--color1);
     max-height: 45vh;
     overflow:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.article-content p{
+    text-align: left;
+    width: 100%;
+}
+.blogImage{
+    width: 30vw;
 }
 
 @media(max-width:992px) {

@@ -25,3 +25,7 @@
 .imguploadbtn{
     margin-bottom: 10px;
 }
+.imagePreview{
+    width: 40vw;
+    margin: 10px;
+}

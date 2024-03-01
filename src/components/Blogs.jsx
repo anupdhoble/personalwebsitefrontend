@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BlogController from "./BlogController";
-import { auth } from '../firebaseConfig';
+import { auth,storage} from '../firebaseConfig';
 import blogPageImg from "../assets/img/blogPageImg.png";
+import {ref, deleteObject } from "firebase/storage";
 
 const Blogs = ({ isLogin }) => {
     const [blogs, setBlogs] = useState([]);
@@ -10,8 +11,9 @@ const Blogs = ({ isLogin }) => {
         fetchAllBlogs();
     }, []);
 
-    const handleDelete = async (blogId) => { // Receive blogId as a parameter
+    const handleDelete = async (blogId, blogImgUrl,imgRefToFirebase) => { // Receive blogId as a parameter
         try {
+
             const url = `https://personalwebsitebackend.onrender.com/blogs/remove/${blogId}`; // Use blogId in the URL
             const response = await fetch(url, {
                 method: 'DELETE',
@@ -21,6 +23,17 @@ const Blogs = ({ isLogin }) => {
             });
 
             if (response.ok) {
+                console.log("Blog deleted, cleaning up resources..");
+                if (blogImgUrl) {
+                   
+                    const storageRef = ref(storage);
+                    deleteObject(ref(storageRef,imgRefToFirebase )).then(() => {
+                        console.log("Previous image deleted");
+                    }).catch((error) => {
+                        console.error("Error deleting previous image:", error);
+                    });
+                }
+
                 fetchAllBlogs();
             } else {
                 throw new Error("Failed to delete blog");
@@ -74,8 +87,8 @@ const Blogs = ({ isLogin }) => {
                     <article key={blog._id} className="blog-article">
                         <div className="article-header">
                             <span className="article-title">{blog.title}</span>
-                            {isLogin && auth.currentUser.displayName === blog.author && (
-                                <span><button onClick={() => handleDelete(blog._id)}>🗑️</button></span> // Pass blogId to handleDelete
+                            {auth.currentUser && isLogin && auth.currentUser.displayName === blog.author && (
+                                <span><button onClick={() => handleDelete(blog._id, blog.imgUrl,blog.imgRefToFirebase)}>🗑️</button></span> // Pass blogId to handleDelete
                             )}
                             <span className="article-right">
                                 <div className="article-author">@{blog.author}</div>
@@ -84,6 +97,7 @@ const Blogs = ({ isLogin }) => {
                         </div>
                         <div className="hr-nav m-auto"><hr /></div>
                         <div className="article-content">
+                            {blog.imgUrl && <img className="blogImage" src={blog.imgUrl} alt="blog" />}
                             <p>{blog.content}</p>
                         </div>
                     </article>
