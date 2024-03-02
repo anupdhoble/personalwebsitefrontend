@@ -120,6 +120,13 @@ h1,p{
     float: right;
     margin: 4px;
 }
+.HashSpinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+
+}
 
 @media(max-width:992px) {
     .title-content{

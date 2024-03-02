@@ -3,11 +3,12 @@ import BlogController from "./BlogController";
 
 import { auth, storage } from '../firebaseConfig';
 import { useNavigate } from "react-router-dom";
-import { getDownloadURL, ref, uploadBytes,deleteObject } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes, deleteObject } from 'firebase/storage';
 import '../styles/bloglogin.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import "firebase/compat/storage";
+import { BeatLoader } from "react-spinners";
 
 export default function CreateBlog({ isLogin }) {
 
@@ -20,13 +21,16 @@ export default function CreateBlog({ isLogin }) {
     const [blogContent, setBlogContent] = useState("");
     const [imgloc, setImgloc] = useState("");
     const navigate = useNavigate();
+    const [imgloading, setImgloading] = useState(false);
 
     const handleChange = (e) => {
+        
         toast.info("Uploading please wait...");
+        setImgloading(true);
         const selectedFile = e.target.files[0];
         if (selectedFile) {//this is done to avoid error if we click on upload and close explorer without selecting any file
             //In case of reupload , first delete the previous image
-            if(file!==null){
+            if (file !== null) {
                 deleteObject(ref(storageRef, `blogs/${file.name}`)).then(() => {
                     console.log("Previous Image deleted");
                 }).catch((error) => {
@@ -43,9 +47,11 @@ export default function CreateBlog({ isLogin }) {
                 setImgurl(url);
                 console.log('File available at', url);
                 toast.success("Image uploaded successfully");
+                setImgloading(false);
 
             });
         }
+       
     }
     const handleSubmit = async () => {
         if (title !== "" && blogContent !== "") {
@@ -112,13 +118,22 @@ export default function CreateBlog({ isLogin }) {
                             setBlogContent(event.target.value);
                         }}></textarea>
                     </div>
-                    <input type="file" onChange={handleChange} accept="image/*" />
-                    
+                    {!imgloading &&
+                        <div >
+                            <label htmlFor="fileInput" id="imageUpload">Choose Image</label>
+                            <input style={{ display: "none" }} id="fileInput" type="file"  onChange={handleChange} accept="image/*" />
+                        </div>
+                    }
+                    {imgloading &&
+                        <BeatLoader color="#05386B" />
+                    }
+
+
                     {imgurl &&
-                    <div>
-                        <p>Image preview</p>
-                        <img className="imagePreview" src={imgurl} alt="blog_image" />
-                    </div>
+                        <div>
+                            <p>Image preview</p>
+                            <img className="imagePreview" src={imgurl} alt="blog_image" />
+                        </div>
                     }
                     <button onClick={(e) => { handleSubmit(e) }}>Submit</button>
 

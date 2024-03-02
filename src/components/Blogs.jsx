@@ -3,19 +3,21 @@ import BlogController from "./BlogController";
 import { auth, storage } from '../firebaseConfig';
 import blogPageImg from "../assets/img/blogPageImg.png";
 import { ref, deleteObject } from "firebase/storage";
+import { HashLoader } from "react-spinners";
 
 
-const Blogs = ({ isLogin,toast }) => {
+const Blogs = ({ isLogin, showNotification }) => {
     const [blogs, setBlogs] = useState([]);
-
+    const [loading,setLoading]=useState(true);
     useEffect(() => {
+        window.scrollTo(0, 0);
         fetchAllBlogs();
     }, []);
 
     const handleDelete = async (blogId, blogImgUrl, imgRefToFirebase) => { // Receive blogId as a parameter
         if (window.confirm("Are you sure you want to delete this blog?")) {
             try {
-                toast.info("Deleting blog..");
+                // showNotification("Deleting Blog..","info");
                 const url = `https://personalwebsitebackend.onrender.com/blogs/remove/${blogId}`; // Use blogId in the URL
                 const response = await fetch(url, {
                     method: 'DELETE',
@@ -25,7 +27,7 @@ const Blogs = ({ isLogin,toast }) => {
                 });
 
                 if (response.ok) {
-                    toast.success("Blog deleted successfully");
+                    // showNotification("Blog deleted successfully","success");
                     console.log("Blog deleted, cleaning up resources..");
                     if (blogImgUrl) {
 
@@ -33,18 +35,18 @@ const Blogs = ({ isLogin,toast }) => {
                         deleteObject(ref(storageRef, imgRefToFirebase)).then(() => {
                             console.log("Previous image deleted");
                         }).catch((error) => {
-                            toast.error("Blog deletion failed");
+                            // showNotification("Blog deletion failed","error");
                             console.error("Error deleting previous image:", error);
                         });
                     }
 
                     fetchAllBlogs();
                 } else {
-                    toast.error("Blog deletion failed");
+                    // showNotification("Blog deletion failed","error");
                     throw new Error("Failed to delete blog");
                 }
             } catch (error) {
-                toast.error("Blog deletion failed");
+                // showNotification("Blog deletion failed","error");
                 console.error("Error deleting blog:", error);
             }
         }
@@ -66,6 +68,7 @@ const Blogs = ({ isLogin,toast }) => {
                     ...blog,
                     createdAt: new Date(blog.createdAt).toLocaleDateString()
                 })).reverse();
+                setLoading(false);
                 setBlogs(formattedBlogs);
             } else {
                 throw new Error("Failed to fetch blogs");
@@ -91,6 +94,7 @@ const Blogs = ({ isLogin,toast }) => {
             <BlogController isLogin={isLogin} />
             <div className="blog-articles footer-fix max-width-1">
                 <h2 className="color2">Featured Articles</h2>
+                {loading && <div className="HashSpinner" ><HashLoader color="#05386B" /></div>}
                 {blogs.map((blog) => (
                     <article key={blog._id} className="blog-article">
                         <div className="article-header">

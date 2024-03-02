@@ -17,7 +17,21 @@ import Resume from './components/Resume';
 import { ToastContainer,toast } from 'react-toastify';
 
 
-
+const showNotification = (message, type) => {
+  switch (type) {
+    case 'success':
+      toast.success(message);
+      break;
+    case 'error':
+      toast.error(message);
+      break;
+    case 'info':
+      toast.info(message);
+      break;
+    default:
+      toast(message);
+  }
+};
 
 function App() {
   // dotenv.config();
@@ -56,7 +70,7 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/projects" element={<Projects />}/>
         <Route path="/resume" element={<Resume />}/>
-        <Route path="/blogs" element={<Blogs isLogin={isLogin} toast={toast}/>}/>
+        <Route path="/blogs" element={<Blogs isLogin={isLogin} showNotification={showNotification}/>}/>
         <Route path="/blogs/login" element={<Bloglogin isLogin={isLogin} setIsLogin={setIsLogin}/>}/>
         <Route path="/blogs/create" element={<CreateBlog isLogin={isLogin}/>}/>
         <Route path="*" element={<POM/>}/>
