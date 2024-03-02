@@ -5,7 +5,7 @@ export default function About() {
         <div id="pagecontent">
         <h1 className="titles">Technologies Used:</h1>
         <ul>
-            <li>React</li>
+            <li>React.js</li>
             <li>Node.js</li>
             <li>Firebase</li>
             <li>Mongodb</li>
@@ -19,11 +19,8 @@ export default function About() {
             <li>anupdhoble@gmail.com</li>
             <li>Second Year CSE Student At Shri Ramdeobaba College OF Engineering Nagpur.</li>
         </ul>
-        <h1 className="titles">Hosted On:</h1>
-        <ul>
-            <li>Frontend:- Netlify</li>
-            <li>Backend:- AWS,EC2 Instance</li>
-        </ul>
+        
+        
         {/* <h1 className="titles">Disclaimer</h1>
         <h2 className="disclaimer">A fun project to test my skills. <br/>All rights of songs and logos are reserverd with
             respective parties.<br/>We respect your copyrights and would like to here out issues(if any).
