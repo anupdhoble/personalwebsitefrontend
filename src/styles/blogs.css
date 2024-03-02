@@ -104,7 +104,7 @@ h1,p{
     font-size: 19px;
     margin-top: 0.3rem;
     color: var(--color1);
-    max-height: 45vh;
+    max-height: 60vh;
     overflow:auto;
     display: flex;
     flex-direction: column;
@@ -116,7 +116,9 @@ h1,p{
     width: 100%;
 }
 .blogImage{
-    width: 30vw;
+    width: 25vw;
+    float: right;
+    margin: 4px;
 }
 
 @media(max-width:992px) {
@@ -142,6 +144,10 @@ h1,p{
     .article-right{
         display: flex;
         justify-content: space-between;
+    }
+    .blogImage{
+        width: 40vw;
+        
     }
 }
 

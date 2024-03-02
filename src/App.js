@@ -14,6 +14,7 @@ import CreateBlog from './components/CreateBlog';
 import Projects from './components/Projects';
 import POM from './components/POM';
 import Resume from './components/Resume';
+import { ToastContainer,toast } from 'react-toastify';
 
 
 
@@ -39,12 +40,14 @@ function App() {
 
   return (
     
-      
+    
     <Router>
+
       <Helmet>
         <title>Anup Dhoble || Portfolio</title>
       </Helmet>
       <Header isNavbarActive={isNavbarActive} toggleNavbar={toggleNavbar} closeTheMenu={closeTheMenu}/>
+      <ToastContainer position="top-right" autoClose={1500} hideProgressBar={false} />
       <Routes>
         {/* Define your routes here */}
         <Route path="/home" element={<Home isLogin={isLogin} setIsLogin={setIsLogin}/>} />
@@ -53,7 +56,7 @@ function App() {
         <Route path="/contact" element={<Contact/>} />
         <Route path="/projects" element={<Projects />}/>
         <Route path="/resume" element={<Resume />}/>
-        <Route path="/blogs" element={<Blogs isLogin={isLogin}/>}/>
+        <Route path="/blogs" element={<Blogs isLogin={isLogin} toast={toast}/>}/>
         <Route path="/blogs/login" element={<Bloglogin isLogin={isLogin} setIsLogin={setIsLogin}/>}/>
         <Route path="/blogs/create" element={<CreateBlog isLogin={isLogin}/>}/>
         <Route path="*" element={<POM/>}/>

@@ -28,7 +28,7 @@ export default function CreateBlog({ isLogin }) {
             //In case of reupload , first delete the previous image
             if(file!==null){
                 deleteObject(ref(storageRef, `blogs/${file.name}`)).then(() => {
-                    console.log("Image deleted");
+                    console.log("Previous Image deleted");
                 }).catch((error) => {
                     console.error("Error deleting previous image:", error);
                 });
@@ -36,9 +36,9 @@ export default function CreateBlog({ isLogin }) {
             setFile(selectedFile);
             const imageRef = ref(storageRef, `blogs/${selectedFile.name}`);
             setImgloc(`blogs/${selectedFile.name}`);
-            console.log("Uploading new image...");
+            console.log("Uploading please wait...");
             uploadBytes(imageRef, selectedFile).then(async (snapshot) => {
-                console.log('Uploaded image');
+                console.log('Uploaded new image');
                 const url = await getDownloadURL(imageRef);
                 setImgurl(url);
                 console.log('File available at', url);
