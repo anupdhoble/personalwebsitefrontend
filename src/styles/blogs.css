@@ -127,7 +127,47 @@ h1,p{
     height: 20vh;
 
 }
-
+.socialpanel{
+    float: right;
+    display: flex;
+    flex-direction:row ;
+    justify-content: center;
+    align-items: center;
+}
+.likeicon{
+    /* background-image: url("../assets/img/like.png"); */
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: cover;
+    margin-left: 5px;
+}
+.likeicon:hover{
+    cursor: pointer;
+}
+.likecount{
+    color: black;
+}
+.commenticon{
+    background-image: url("../assets/img/comment.png");
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: cover;
+    margin: 2px;
+    margin-left: 5px;
+}
+.commenticon:hover{
+    cursor: pointer;
+}
+.shareicon{
+    background-image: url("../assets/img/share.png");
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: cover;
+    margin-left: 5px;
+}
+.shareicon:hover{
+    cursor: pointer;
+}
 @media(max-width:992px) {
     .title-content{
         width: 90vw;

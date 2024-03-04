@@ -4,15 +4,39 @@ import { auth, storage } from '../firebaseConfig';
 import blogPageImg from "../assets/img/blogPageImg.png";
 import { ref, deleteObject } from "firebase/storage";
 import { HashLoader } from "react-spinners";
+import likeicon from "../assets/img/like.png";
+import commenticon from "../assets/img/comment.png";
+import shareicon from "../assets/img/share.png";
 
 
 const Blogs = ({ isLogin, showNotification }) => {
     const [blogs, setBlogs] = useState([]);
-    const [loading,setLoading]=useState(true);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         window.scrollTo(0, 0);
         fetchAllBlogs();
     }, []);
+
+    //for share button
+    function shareCurrentPage(blogtitle,blogauthor) {
+        // Get the current URL
+        var currentUrl = window.location.href;
+
+        // Check if the Web Share API is supported by the browser
+        if (navigator.share) {
+            // Use the Web Share API to share the current URL
+            navigator.share({
+                title: "Blog: "+blogtitle+" || By: "+blogauthor,
+                url: currentUrl
+            })
+                .then(() => console.log('Shared successfully'))
+                .catch((error) => console.error('Error sharing:', error));
+        } else {
+            // Fallback for browsers that do not support the Web Share API
+            alert('Your browser does not support the share functionality. You can manually copy the URL.');
+        }
+    }
+
 
     const handleDelete = async (blogId, blogImgUrl, imgRefToFirebase) => { // Receive blogId as a parameter
         if (window.confirm("Are you sure you want to delete this blog?")) {
@@ -80,7 +104,7 @@ const Blogs = ({ isLogin, showNotification }) => {
 
     return (
         <>
-            
+
             <div className="title-content max-width-1">
                 <div className="title-content-left">
                     <h1 className="blog-title-welcome">Welcome to Blogs!!</h1>
@@ -113,8 +137,16 @@ const Blogs = ({ isLogin, showNotification }) => {
                             <p>
                                 {blog.imgUrl && <img className="blogImage" src={blog.imgUrl} alt="blog" />}
                                 {blog.content}
+                                
                             </p>
                         </div>
+                        <div className="socialpanel">
+                                    <img className="likeicon" src={likeicon} alt="like" />
+                                    <div className="likecount">2</div>
+                                    <img className="commenticon" src={commenticon} alt="comment" />
+                                    <div className="commentcount">3</div>
+                                    <img className="shareicon" src={shareicon} onClick={()=>{shareCurrentPage(blog.title,blog.author)}} alt="share" />
+                                </div>
                     </article>
                 ))}
             </div>
