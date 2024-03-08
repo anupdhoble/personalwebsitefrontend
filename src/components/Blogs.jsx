@@ -7,6 +7,7 @@ import { HashLoader } from "react-spinners";
 import likeicon from "../assets/img/like.png";
 import commenticon from "../assets/img/comment.png";
 import shareicon from "../assets/img/share.png";
+import send from "../assets/img/send.png";
 
 
 const Blogs = ({ isLogin, showNotification }) => {
@@ -18,7 +19,7 @@ const Blogs = ({ isLogin, showNotification }) => {
     }, []);
 
     //for share button
-    function shareCurrentPage(blogtitle,blogauthor) {
+    function shareCurrentPage(blogtitle, blogauthor) {
         // Get the current URL
         var currentUrl = window.location.href;
 
@@ -26,7 +27,7 @@ const Blogs = ({ isLogin, showNotification }) => {
         if (navigator.share) {
             // Use the Web Share API to share the current URL
             navigator.share({
-                title: "Blog: "+blogtitle+" || By: "+blogauthor,
+                title: "Blog: " + blogtitle + " || By: " + blogauthor,
                 url: currentUrl
             })
                 .then(() => console.log('Shared successfully'))
@@ -137,17 +138,28 @@ const Blogs = ({ isLogin, showNotification }) => {
                             <p>
                                 {blog.imgUrl && <img className="blogImage" src={blog.imgUrl} alt="blog" />}
                                 {blog.content}
-                                
+
                             </p>
                         </div>
                         <div className="socialpanel">
-                                    <img className="likeicon" src={likeicon} alt="like" />
-                                    <div className="likecount">2</div>
-                                    <img className="commenticon" src={commenticon} alt="comment" />
-                                    <div className="commentcount">3</div>
-                                    <img className="shareicon" src={shareicon} onClick={()=>{shareCurrentPage(blog.title,blog.author)}} alt="share" />
-                                </div>
+                            <img className="likeicon" src={likeicon} alt="like" />
+                            <div className="likecount">{blog.likecount}</div>
+                            <img className="commenticon" src={commenticon} alt="comment" />
+                            <div className="commentcount">3</div>
+                            <img className="shareicon" src={shareicon} onClick={() => { shareCurrentPage(blog.title, blog.author) }} alt="share" />
+                        </div>
+                        <div className="commentarea">
+                            <div className="comments">
+
+                            </div>
+                            <div className="postcomment">
+
+                                <input type="text" placeholder="Write a comment..." />
+                                <img src={send} alt="send" />
+                            </div>
+                        </div>
                     </article>
+
                 ))}
             </div>
         </>
