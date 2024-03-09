@@ -3,7 +3,7 @@ import BlogController from "./BlogController";
 import { auth, storage } from '../firebaseConfig';
 import blogPageImg from "../assets/img/blogPageImg.png";
 import { ref, deleteObject } from "firebase/storage";
-import { HashLoader } from "react-spinners";
+import { HashLoader , MoonLoader} from "react-spinners";
 import likeicon from "../assets/img/like.png";
 import commenticon from "../assets/img/comment.png";
 import shareicon from "../assets/img/share.png";
@@ -13,22 +13,30 @@ import send from "../assets/img/send.png";
 const Blogs = ({ isLogin, showNotification }) => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [comment, setComment] = useState(""); // State to store comment
+    const [commentVisibility, setCommentVisibility] = useState({});// State to track comment visibility
+    const [blogcomments, setBlogcomments] = useState({});// State to store comments for each blog
+    const [sendcommentloader, setSendcommentloader] = useState(false);
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        setCommentVisibility({}); // Reset commentVisibility state object
+        setComment(""); // Reset comment state
+        setBlogcomments({});// Reset blogcomments state object
         fetchAllBlogs();
     }, []);
 
     //for share button
-    function shareCurrentPage(blogtitle, blogauthor) {
+    function shareABlog(blogtitle, blogauthor,blogid) {
         // Get the current URL
-        var currentUrl = window.location.href;
+        var blogurl = `/shareblog/${blogid}`;
 
         // Check if the Web Share API is supported by the browser
         if (navigator.share) {
             // Use the Web Share API to share the current URL
             navigator.share({
                 title: "Blog: " + blogtitle + " || By: " + blogauthor,
-                url: currentUrl
+                url: blogurl
             })
                 .then(() => console.log('Shared successfully'))
                 .catch((error) => console.error('Error sharing:', error));
@@ -93,6 +101,16 @@ const Blogs = ({ isLogin, showNotification }) => {
                     ...blog,
                     createdAt: new Date(blog.createdAt).toLocaleDateString()
                 })).reverse();
+                
+                // Initialize commentVisibility state object with all blog IDs
+                const initialCommentVisibility={}
+                formattedBlogs.forEach(blog=>{
+                    initialCommentVisibility[blog._id]=false;
+                });
+                
+                setCommentVisibility(initialCommentVisibility);
+
+                
                 setLoading(false);
                 setBlogs(formattedBlogs);
             } else {
@@ -102,6 +120,98 @@ const Blogs = ({ isLogin, showNotification }) => {
             console.error("Error fetching blogs:", error);
         }
     };
+
+    const fetchblogcomments = async(blogid)=>{
+        try {
+            const url = `http://localhost:5000/comments/get/${blogid}`;
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setBlogcomments(prevState=>({
+                    ...prevState,
+                    [blogid]:data
+                }));
+                console.log(blogcomments);
+            } else {
+                throw new Error("Failed to fetch comments");
+            }
+        } catch (error) {
+            console.error("Error fetching comments:", error);
+        }
+    }
+
+    const toggleCommentVIsibility=async(blogid)=>{
+        setCommentVisibility(prevState=>({
+            ...prevState,
+            [blogid]:!prevState[blogid] // Toggle visibility for the clicked blog
+        }));
+
+        // Fetch comments for the blog if not already fetched
+        await fetchblogcomments(blogid);
+        
+        
+        
+    }
+
+    const handlecomment = (e) => {
+        setComment(e.target.value);
+    }
+
+    const sendcomment = async(blogid) => {
+        if(comment!=="" && comment!==null){
+            try {
+                setSendcommentloader(true);
+                const url="http://localhost:5000/comments/create";
+                const response = await fetch(url,{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({
+                        uid:auth.currentUser.uid,
+                        commenter:auth.currentUser.displayName,
+                        blogid:blogid,
+                        content:comment
+                    })
+                });
+                setComment("");
+                if(response.ok){
+                    console.log("Comment sent successfully");
+                    await fetchblogcomments(blogid);
+                }
+                setSendcommentloader(false);
+            } catch (error) {
+                setSendcommentloader(false);
+                console.error("Error sending comment:", error);
+            }
+            setSendcommentloader(false);
+        }else{
+            console.log("Comment can't be empty");
+        }
+    }
+    const deletecomment = async(blogid,commentid) => {
+        try {
+            const url=`http://localhost:5000/comments/delete/${commentid}`;
+            const response = await fetch(url,{
+                method:'DELETE',
+                headers:{
+                    'Content-Type':'application/json'
+                }
+            });
+            if(response.ok){
+                console.log("Comment deleted successfully");
+                fetchblogcomments(blogid);
+            }
+        } catch (error) {
+            console.error("Error deleting comment:", error);
+        }
+    }
 
     return (
         <>
@@ -124,7 +234,7 @@ const Blogs = ({ isLogin, showNotification }) => {
                     <article key={blog._id} className="blog-article">
                         <div className="article-header">
                             <span className="article-title">{blog.title}</span>
-                            {auth.currentUser && isLogin && auth.currentUser.displayName === blog.author && (
+                            {auth.currentUser && isLogin && auth.currentUser.uid === blog.uid && (
                                 <span><button onClick={() => handleDelete(blog._id, blog.imgUrl, blog.imgRefToFirebase)}>🗑️</button></span> // Pass blogId to handleDelete
                             )}
                             <span className="article-right">
@@ -143,19 +253,31 @@ const Blogs = ({ isLogin, showNotification }) => {
                         </div>
                         <div className="socialpanel">
                             <img className="likeicon" src={likeicon} alt="like" />
-                            <div className="likecount">{blog.likecount}</div>
-                            <img className="commenticon" src={commenticon} alt="comment" />
-                            <div className="commentcount">3</div>
-                            <img className="shareicon" src={shareicon} onClick={() => { shareCurrentPage(blog.title, blog.author) }} alt="share" />
+                            {/* <div className="likecount">{blog.likecount}</div> */}
+                            <img className="commenticon" onClick={()=>{toggleCommentVIsibility(blog._id)}} src={commenticon} alt="comment" />
+                            {/* <div className="commentcount">{}</div> */}
+                            <img className="shareicon" src={shareicon} onClick={() => { shareABlog(blog.title, blog.author,blog._id) }} alt="share" />
                         </div>
-                        <div className="commentarea">
+                        <div className={`commentarea ${commentVisibility[blog._id] ? 'commentvisible' : ''}`}>
                             <div className="comments">
-
+                                {blogcomments[blog._id] && blogcomments[blog._id].map((comment) => (
+                                    <div key={comment._id} className="comment">
+                                        <span className="commenter">{`${comment.commenter} : ${comment.content}`}</span>
+                                        <span className="deletecomment" onClick={()=>{deletecomment(blog._id,comment._id)}}>🗑️</span>
+                                    </div>
+                                ))}
+                                {(!(blogcomments[blog._id]) || blogcomments[blog._id].length===0) && <div>Be First to comment on this blog...</div>}
                             </div>
                             <div className="postcomment">
 
-                                <input type="text" placeholder="Write a comment..." />
-                                <img src={send} alt="send" />
+                                <input type="text" className="commentinput" value={comment} 
+                               onChange={handlecomment} onKeyDown={(e)=>{if(e.key==='Enter'){sendcomment(blog._id)}}} placeholder="Write a comment..." />
+                                {!sendcommentloader &&
+                                    <img src={send}  onClick={()=>{sendcomment(blog._id)}} alt="send" />
+                                }
+                                {sendcommentloader &&
+                                    <div className="sendcommentloader"><MoonLoader size={20} color="#05386B" /></div>
+                                }
                             </div>
                         </div>
                     </article>

@@ -15,6 +15,7 @@ import Projects from './components/Projects';
 import POM from './components/POM';
 import Resume from './components/Resume';
 import { ToastContainer,toast } from 'react-toastify';
+import ShareABlog from './components/ShareABlog';
 
 
 const showNotification = (message, type) => {
@@ -73,6 +74,7 @@ function App() {
         <Route path="/blogs" element={<Blogs isLogin={isLogin} showNotification={showNotification}/>}/>
         <Route path="/blogs/login" element={<Bloglogin isLogin={isLogin} setIsLogin={setIsLogin}/>}/>
         <Route path="/blogs/create" element={<CreateBlog isLogin={isLogin}/>}/>
+        <Route path="/shareblog/:blogid" element={<ShareABlog/>}/>
         <Route path="*" element={<POM/>}/>
       </Routes>
       <Footer isNavbarActive={isNavbarActive} toggleNavbar={toggleNavbar} />
