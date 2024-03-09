@@ -164,7 +164,7 @@ const Blogs = ({ isLogin, showNotification }) => {
     }
 
     const sendcomment = async(blogid) => {
-        if(auth.currentUser===undefined){
+        if(auth.currentUser===undefined || auth.currentUser===null){
             showNotification("Please login to comment","error");
             return;
         }else{
