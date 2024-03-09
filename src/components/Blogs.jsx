@@ -123,7 +123,7 @@ const Blogs = ({ isLogin, showNotification }) => {
 
     const fetchblogcomments = async(blogid)=>{
         try {
-            const url = `http://localhost:5000/comments/get/${blogid}`;
+            const url = `https://personalwebsitebackend.onrender.com/comments/get/${blogid}`;
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -164,40 +164,45 @@ const Blogs = ({ isLogin, showNotification }) => {
     }
 
     const sendcomment = async(blogid) => {
-        if(comment!=="" && comment!==null){
-            try {
-                setSendcommentloader(true);
-                const url="http://localhost:5000/comments/create";
-                const response = await fetch(url,{
-                    method:'POST',
-                    headers:{
-                        'Content-Type':'application/json'
-                    },
-                    body:JSON.stringify({
-                        uid:auth.currentUser.uid,
-                        commenter:auth.currentUser.displayName,
-                        blogid:blogid,
-                        content:comment
-                    })
-                });
-                setComment("");
-                if(response.ok){
-                    console.log("Comment sent successfully");
-                    await fetchblogcomments(blogid);
+        if(auth.currentUser===undefined){
+            showNotification("Please login to comment","error");
+            return;
+        }else{
+            if(comment!=="" && comment!==null){
+                try {
+                    setSendcommentloader(true);
+                    const url="https://personalwebsitebackend.onrender.com/comments/create";
+                    const response = await fetch(url,{
+                        method:'POST',
+                        headers:{
+                            'Content-Type':'application/json'
+                        },
+                        body:JSON.stringify({
+                            uid:auth.currentUser.uid,
+                            commenter:auth.currentUser.displayName,
+                            blogid:blogid,
+                            content:comment
+                        })
+                    });
+                    setComment("");
+                    if(response.ok){
+                        console.log("Comment sent successfully");
+                        await fetchblogcomments(blogid);
+                    }
+                    setSendcommentloader(false);
+                } catch (error) {
+                    setSendcommentloader(false);
+                    console.error("Error sending comment:", error);
                 }
                 setSendcommentloader(false);
-            } catch (error) {
-                setSendcommentloader(false);
-                console.error("Error sending comment:", error);
+            }else{
+                console.log("Comment can't be empty");
             }
-            setSendcommentloader(false);
-        }else{
-            console.log("Comment can't be empty");
         }
     }
     const deletecomment = async(blogid,commentid) => {
         try {
-            const url=`http://localhost:5000/comments/delete/${commentid}`;
+            const url=`https://personalwebsitebackend.onrender.com/comments/delete/${commentid}`;
             const response = await fetch(url,{
                 method:'DELETE',
                 headers:{

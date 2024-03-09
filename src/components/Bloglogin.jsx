@@ -4,6 +4,7 @@ import { signInWithPopup } from "firebase/auth";
 import { signOut } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 import '../styles/bloglogin.css'
+import { useEffect } from "react";
 
 
 export default function Bloglogin({ isLogin, setIsLogin }) {
@@ -26,7 +27,11 @@ export default function Bloglogin({ isLogin, setIsLogin }) {
 
         })
     }
-
+    useEffect(() => {
+        if (auth.currentUser===undefined) {
+            localStorage.removeItem("isLogin");
+        }
+    }, [isLogin]);
     const UserProfile = ({ user}) => {
         return (
             <div className="user-profile">
