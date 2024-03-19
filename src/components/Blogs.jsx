@@ -232,6 +232,7 @@ const Blogs = ({ isLogin, showNotification }) => {
                 </div>
             </div>
             <BlogController isLogin={isLogin} />
+            <h1>Blogging Services is down for routine maintenance🪛🪛</h1>
             <div className="blog-articles footer-fix max-width-1">
                 <h2 className="color2">Featured Articles</h2>
                 {loading && <div className="HashSpinner" ><HashLoader color="#05386B" /></div>}
