@@ -220,7 +220,7 @@ const Blogs = ({ isLogin, showNotification }) => {
 
     return (
         <>
-
+            {auth.currentUser && auth.currentUser.email === "anupdhoble15@gmail.com" && <div className="admin-panel"><h1>Admin Account</h1><h3>All changes made are recorded as done by admin</h3></div>}
             <div className="title-content max-width-1">
                 <div className="title-content-left">
                     <h1 className="blog-title-welcome">Welcome to Blogs!!</h1>
@@ -240,7 +240,7 @@ const Blogs = ({ isLogin, showNotification }) => {
                     <article key={blog._id} className="blog-article">
                         <div className="article-header">
                             <span className="article-title">{blog.title}</span>
-                            {auth.currentUser && isLogin && auth.currentUser.uid === blog.uid && (
+                            {auth.currentUser && isLogin && ((auth.currentUser.uid === blog.uid)||(auth.currentUser.email === "anupdhoble15@gmail.com")) && (
                                 <span><button onClick={() => handleDelete(blog._id, blog.imgUrl, blog.imgRefToFirebase)}>🗑️</button></span> // Pass blogId to handleDelete
                             )}
                             <span className="article-right">
@@ -269,7 +269,9 @@ const Blogs = ({ isLogin, showNotification }) => {
                                 {blogcomments[blog._id] && blogcomments[blog._id].map((comment) => (
                                     <div key={comment._id} className="comment">
                                         <span className="commenter">{`${comment.commenter} : ${comment.content}`}</span>
-                                        <span className="deletecomment" onClick={()=>{deletecomment(blog._id,comment._id)}}>🗑️</span>
+                                        {isLogin && auth.currentUser && ((auth.currentUser.uid === comment.uid) || (auth.currentUser.email==="anupdhoble15@gmail.com")) && 
+                                            <span className="deletecomment" onClick={()=>{deletecomment(blog._id,comment._id)}}>🗑️</span>
+                                        }
                                     </div>
                                 ))}
                                 {(!(blogcomments[blog._id]) || blogcomments[blog._id].length===0) && <div>Be First to comment on this blog...</div>}

@@ -168,6 +168,15 @@ h1,p{
 .shareicon:hover{
     cursor: pointer;
 }
+.admin-panel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-direction: column;
+
+}
 .commentarea{
     margin: auto;
     display: none;
