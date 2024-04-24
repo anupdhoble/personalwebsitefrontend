@@ -35,6 +35,7 @@ export default function CreateBlog({ isLogin }) {
                     console.log("Previous Image deleted");
                 }).catch((error) => {
                     console.error("Error deleting previous image:", error);
+                    setImgloading(false);
                 });
             }
             setFile(selectedFile);
