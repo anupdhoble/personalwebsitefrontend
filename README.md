@@ -20,7 +20,7 @@ This project is a portfolio website that showcases my blogs, profile, projects, 
 
 - **Frontend:** React.js
 - **Backend:** Node.js Code-> [https://github.com/anupdhoble/personalwebsitebackend](https://github.com/anupdhoble/personalwebsitebackend)
-
+- **Firebase** : User Authentication, Image Storage
 - **Database:** MongoDB
 - **Deployment:** MongoDB Atlas , Netlify , Render
 
