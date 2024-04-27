@@ -223,8 +223,8 @@ const Blogs = ({ isLogin, showNotification }) => {
             {auth.currentUser && auth.currentUser.email === "anupdhoble15@gmail.com" && <div className="admin-panel"><h1>Admin Account</h1><h3>All changes made are recorded as done by admin</h3></div>}
             <div className="title-content max-width-1">
                 <div className="title-content-left">
-                    <h1 className="blog-title-welcome">Welcome to Blogs!!</h1>
-                    <p>Create Your Own Blogs By Logging In!!!</p>
+                    <h1 className="blog-title-welcome">Welcome to TechTrendTalks!!</h1>
+                    <p>Stay Ahead of the Curve: Dive into the Latest Tech Trends with TechTrend Talks!!!</p>
                     <p className="thoughts">I think of us as journalists; the medium we work in is blogging. <br />--Joshua Marshall</p>
                 </div>
                 <div className="title-content-right">
