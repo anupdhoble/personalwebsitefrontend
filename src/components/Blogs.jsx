@@ -86,8 +86,14 @@ const Blogs = ({ isLogin, showNotification }) => {
     }
 
     const fetchAllBlogs = async () => {
+        // fetchDelayMsg is used to show a notification if the server is taking too long to respond
+        const fetchDelayMsg = setTimeout(() => {
+            showNotification("Please wait server is rolling back up, it was in power saving mode.", "info",10000);
+        }, 5000);
         try {
+            
             const url = "https://personalwebsitebackend.onrender.com/blogs/getAll";
+
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -118,8 +124,12 @@ const Blogs = ({ isLogin, showNotification }) => {
             }
         } catch (error) {
             console.error("Error fetching blogs:", error);
-        }
-    };
+        }finally {
+        // Clear the timeout only if it hasn't been cleared already
+        if (fetchDelayMsg) {
+            clearTimeout(fetchDelayMsg);
+        }}
+    }
 
     const fetchblogcomments = async(blogid)=>{
         try {

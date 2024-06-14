@@ -18,7 +18,8 @@ import { ToastContainer,toast } from 'react-toastify';
 import ShareABlog from './components/ShareABlog';
 
 
-const showNotification = (message, type) => {
+const showNotification = (message, type,period) => {
+  if(period===undefined) period=2000;
   switch (type) {
     case 'success':
       toast.success(message);
@@ -30,7 +31,7 @@ const showNotification = (message, type) => {
       toast.info(message);
       break;
     default:
-      toast(message);
+      toast(message, { autoClose: period })
   }
 };
 
@@ -62,7 +63,7 @@ function App() {
         <title>Anup Dhoble || Portfolio</title>
       </Helmet>
       <Header isNavbarActive={isNavbarActive} toggleNavbar={toggleNavbar} closeTheMenu={closeTheMenu}/>
-      <ToastContainer position="top-right" autoClose={1500} hideProgressBar={false} />
+      <ToastContainer position="top-right" hideProgressBar={false} />
       <Routes>
         {/* Define your routes here */}
         <Route path="/home" element={<Home isLogin={isLogin} setIsLogin={setIsLogin}/>} />
