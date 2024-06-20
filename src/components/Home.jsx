@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import photo from '../assets/img/anup.png';
+import downarrow from '../assets/img/down.gif';
 import '../styles/home.css'; // Import your home component styles here
 
 export default function Home({ isLogin }) {
@@ -35,8 +36,11 @@ export default function Home({ isLogin }) {
                 </div>
             </div>
             
-            <div  onClick={handleContact} className="contactbutton">
-                <div>Contact Me</div>
+            {/* {<div  onClick={handleContact} className="contactbutton"> */}
+                {/* <div>Contact Me</div> */}
+            {/* </div>} */}
+            <div className="downarrow">
+                <img src={downarrow} alt="" />
             </div>
         </div>
     );
