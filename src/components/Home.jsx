@@ -39,9 +39,9 @@ export default function Home({ isLogin }) {
             {/* {<div  onClick={handleContact} className="contactbutton"> */}
                 {/* <div>Contact Me</div> */}
             {/* </div>} */}
-            <div className="downarrow">
+            {/* <div className="downarrow">
                 <img src={downarrow} alt="" />
-            </div>
+            </div> */}
         </div>
     );
 }
