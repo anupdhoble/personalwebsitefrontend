@@ -25,8 +25,8 @@ export default function Header({ isNavbarActive, toggleNavbar, closeTheMenu }) {
                     <li><Link className={`${location.pathname === "/blogs" ? 'highlightNavoption' : ''}`} to="/blogs" onClick={closeTheMenu}>Blogs</Link></li>
                     <li><Link className={`${location.pathname === "/music" ? 'highlightNavoption' : ''}`} to="/music" onClick={closeTheMenu}>Music</Link></li>
                     <li><Link className={`${location.pathname === "/projects" ? 'highlightNavoption' : ''}`} to="/projects" onClick={closeTheMenu}>Projects</Link></li>
-                    <li><Link className={`${location.pathname === "/about" ? 'highlightNavoption' : ''}`} to="/about" onClick={closeTheMenu}>About Me</Link></li>
-                    <li><Link className={`${location.pathname === "/contact" ? 'highlightNavoption' : ''}`} to="/contact" onClick={closeTheMenu}>Contact Us</Link></li>
+                    <li><Link className={`${location.pathname === "/about" ? 'highlightNavoption' : ''}`} to="/about" onClick={closeTheMenu}>About</Link></li>
+                    <li><Link className={`${location.pathname === "/contact" ? 'highlightNavoption' : ''}`} to="/contact" onClick={closeTheMenu}>Feedback</Link></li>
 
                 </ul>
                 <div onClick={handleResume} className="resumebutton">

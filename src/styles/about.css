@@ -40,6 +40,12 @@
     color: var(--color5);
     text-align: center;
 }
+.titlelinks{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .disclaimer{
     font-family: var(--font1);
     font-size: large;
