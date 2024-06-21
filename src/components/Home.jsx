@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import photo from '../assets/img/anup.png';
-import downarrow from '../assets/img/down.gif';
+// import downarrow from '../assets/img/down.gif';
 import '../styles/home.css'; // Import your home component styles here
+import githublogo from '../assets/img/github.png';
+import linkedinlogo from '../assets/img/linkedin.png';
+import maillogo from '../assets/img/email.png';
+import codecheflogo from '../assets/img/codechef.svg';
+import instagramlogo from '../assets/img/instagram.png';
+import leetcodelogo from '../assets/img/leetcode.png';
+import twitterlogo from '../assets/img/twitter.png';
 
 export default function Home({ isLogin }) {
     const [text, setText] = useState('');
-    const navigate = useNavigate();
     const [index, setIndex] = useState(0);
     const content = "MERN Stack developer...";
-    const handleContact = () => {
-        window.scrollTo(0, 0);
-        navigate('/contact');
-    }
+    // const navigate = useNavigate();
+    // const handleContact = () => {
+    //     window.scrollTo(0, 0);
+    //     navigate('/contact');
+    // }
 
 
     useEffect(() => {
@@ -42,6 +49,15 @@ export default function Home({ isLogin }) {
             {/* <div className="downarrow">
                 <img src={downarrow} alt="" />
             </div> */}
+            <div id="contactsLinks">
+                <a href="https://www.linkedin.com/in/anupdhoble/" target="_blank" rel="noopener noreferrer" > <img className="contactLogos" src={linkedinlogo} alt="Linkedin"/></a>
+                <a href="https://github.com/anupdhoble" target="_blank" rel="noopener noreferrer"> <img className="contactLogos" src={githublogo} alt="github"/></a>
+                <a href="https://x.com/dhoble_anup" target="_blank" rel="noopener noreferrer"> <img className="contactLogos" src={twitterlogo} alt="twitter"/></a>
+                <a href="mailto:anupdhoble15@gmail.com" rel="noopener noreferrer"> <img className="contactLogos" src={maillogo} alt="email"/></a>
+                <a href="https://leetcode.com/anupdhoble/" target="_blank" rel="noopener noreferrer"> <img className="contactLogos" src={leetcodelogo} alt="leetcode"/></a>
+                <a href="https://www.instagram.com/anup_dhoble/" target="_blank" rel="noopener noreferrer"> <img className="contactLogos" src={instagramlogo} alt="insta"/></a>
+                <a href="https://www.codechef.com/users/anupdhoble" target="_blank" rel="noopener noreferrer"> <img id="codechefLogo" className="contactLogos" src={codecheflogo} alt="codechef"/></a>
+            </div>
         </div>
     );
 }

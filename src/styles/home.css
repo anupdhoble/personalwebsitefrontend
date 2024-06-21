@@ -1,27 +1,32 @@
-.homecontainer{
+.homecontainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     /* background-color: var(--color1); */
-    margin-top: 10vh;
+ 
     height: 60vh;
     width: 90vw;
-    margin-left:auto ;
-    margin-right: auto;
+   
+    margin: 10vh auto 10vh auto;
 
 }
-.home_left{
+
+.home_left {
     color: var(--color1);
     font-size: 2.3rem;
 }
-.home_right{
+
+.home_right {
     margin: 0 10px 0 200px;
 }
-.home_right img{
+
+.home_right img {
     width: 450px;
 }
-.contactbutton,.resumebutton{
+
+.contactbutton,
+.resumebutton {
     margin: 5px auto 5px auto;
     background-color: var(--color1);
     color: var(--color5);
@@ -34,51 +39,105 @@
     border: 2px solid var(--color1);
     text-decoration: none;
 }
-.contactbutton:hover,.resumebutton:hover{
+
+.contactbutton:hover,
+.resumebutton:hover {
     background-color: var(--color3);
     color: var(--color1);
     transition: 0.3s ease-in-out;
     cursor: pointer;
     border: 2px solid var(--color1);
 }
+
 .cursor {
     animation: blink-caret 0.75s step-end infinite;
 }
 
+#contactsLinks {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows wrapping */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 50px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+#contactsLinks a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: auto;
+}
+
+.contactLogos {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    display: block;
+    filter: invert(19%) sepia(43%) saturate(2202%) hue-rotate(182deg) brightness(91%) contrast(98%); /*Took help from tool :https://isotropic.co/tool/hex-color-to-css-filter/*/
+}
+
 @keyframes blink-caret {
-    from, to {
+
+    from,
+    to {
         color: transparent;
     }
+
     50% {
-        color: var(--color1); /* Change cursor color here */
+        color: var(--color1);
+        /* Change cursor color here */
     }
 }
 
 @media(max-width:992px) {
-    .homecontainer{
+    .homecontainer {
         flex-direction: column;
         height: auto;
         align-items: center;
         justify-content: center;
+        margin-bottom: 5vh;
+        margin-top: 5vh;
     }
-    .home_left{
+
+    .home_left {
         font-size: 1.6rem;
         margin: 10px auto 10px auto;
     }
-    .home_right{
+
+    .home_right {
         margin: 10px auto 10px auto;
     }
-    .home_right{
+
+    .home_right {
         width: 400px;
         display: flex;
         margin: 10vh;
         justify-content: center;
     }
-    .home_right img{
+
+    .home_right img {
         width: 300px;
     }
-    .contactbutton,.resumebutton{
+
+    .contactbutton,
+    .resumebutton {
         width: 30vw;
+        font-size: small;
     }
+
+    #contactsLinks a {
+        width: 40px;
+        /* Adjust width for smaller screens */
+        height: 40px;
+        /* Adjust height for smaller screens */
+        margin: 5px;
+        /* Adjust margin for spacing */
+    }
+    
 
 }

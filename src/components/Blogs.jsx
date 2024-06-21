@@ -20,11 +20,13 @@ const Blogs = ({ isLogin, showNotification }) => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        setCommentVisibility({}); // Reset commentVisibility state object
-        setComment(""); // Reset comment state
-        setBlogcomments({});// Reset blogcomments state object
+        setCommentVisibility({});
+        setComment("");
+        setBlogcomments({});
         fetchAllBlogs();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    
 
     //for share button
     function shareABlog(blogtitle, blogauthor,blogid) {
