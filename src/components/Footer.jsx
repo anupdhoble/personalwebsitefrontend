@@ -13,7 +13,7 @@ export default function Footer({ isNavbarActive, toggleNavbar }) {
           </div>
           <div className={`foot ${isNavbarActive ? 'active' : ''}`}>
             <div className="footer max-width-2 m-auto">
-              Copyright © 2023 Anup Dhoble. All rights reserved.
+              Copyright © 2024 Anup Dhoble. All rights reserved.
             </div>
             <button id="scrollup">&uarr;</button>
           </div>
