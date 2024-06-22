@@ -1,4 +1,4 @@
-// POM - Page Under Maintainance
+// POM - Page On Maintainance
 import React, { useState,useEffect } from 'react';
 import "../styles/pom.css"
 import maintainenceimg from "../assets/img/maintainence.gif";
@@ -37,7 +37,7 @@ export default function POM() {
     return (
         <div id="music-master">
             <img src={img404}  className='page404' width="50%" alt='404'/>
-            <h2>Page Under Maintainence🛠️</h2><br />
+            <h2>Page Not Found Or Under Maintainence🛠️</h2><br />
             <button type="button" style={playpausebtn} onClick={toggleAudio}>
                 {isPlaying ? '⏸️': '▶️'}
             </button>
