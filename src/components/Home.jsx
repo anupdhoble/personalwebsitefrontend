@@ -10,6 +10,7 @@ import codecheflogo from '../assets/img/codechef.svg';
 import instagramlogo from '../assets/img/instagram.png';
 import leetcodelogo from '../assets/img/leetcode.png';
 import twitterlogo from '../assets/img/twitter.png';
+import youtubelogo from '../assets/img/youtube.png';
 
 export default function Home({ isLogin }) {
     const [text, setText] = useState('');
@@ -55,6 +56,7 @@ export default function Home({ isLogin }) {
                 <a href="https://x.com/dhoble_anup" target="_blank" rel="noopener noreferrer"> <img className="contactLogos" src={twitterlogo} alt="twitter"/></a>
                 <a href="mailto:anupdhoble15@gmail.com" rel="noopener noreferrer"> <img className="contactLogos" src={maillogo} alt="email"/></a>
                 <a href="https://leetcode.com/anupdhoble/" target="_blank" rel="noopener noreferrer"> <img className="contactLogos" src={leetcodelogo} alt="leetcode"/></a>
+                <a href="https://youtube.com/@anupdhoble2879?si=g_vLTbwWw2dxlGXQ" target="_blank" rel="noopener noreferrer"> <img className="contactLogos" src={youtubelogo} alt="youtube"/></a>
                 <a href="https://www.instagram.com/anup_dhoble/" target="_blank" rel="noopener noreferrer"> <img className="contactLogos" src={instagramlogo} alt="insta"/></a>
                 <a href="https://www.codechef.com/users/anupdhoble" target="_blank" rel="noopener noreferrer"> <img id="codechefLogo" className="contactLogos" src={codecheflogo} alt="codechef"/></a>
             </div>
