@@ -10,7 +10,7 @@ function Projects() {
         ),img_link:'https://firebasestorage.googleapis.com/v0/b/fir-d0405.appspot.com/o/projects%2FScreenshot%202024-04-21%20090134.png?alt=media&token=ddeb8518-c8d4-4fbc-b865-a5b38fbe0c7f' },
         { id: 2, title: 'Activity Tracker Chrome Extension', link: "https://github.com/anupdhoble/Activity_Tracker", description: (
             <>
-                The Activity Tracker <b>Chrome Extension</b> is a powerful tool that helps users monitor users browsing activity by tracking the time spent on different webpages. The backend, built using <b>Ruby on Rails</b> and deployed on Render, seamlessly integrates with the extension to store and manage user data, leveraging an <b>SQLite</b> database for efficient data handling. This project showcases my skills in web development, API creation, and database management, making it a valuable addition to my portfolio.
+                The Activity Tracker <b>Chrome Extension</b> is a powerful tool that helps users monitor users browsing activity by tracking the time spent on different webpages also provides feature to block websites. The backend, built using <b>Ruby on Rails</b> and deployed on Render, seamlessly integrates with the extension to store and manage user data, leveraging an <b>SQLite</b> database for efficient data handling. This project showcases my skills in web development, API creation, and database management, making it a valuable addition to my portfolio.
             </>
         ),img_link:'https://firebasestorage.googleapis.com/v0/b/fir-d0405.appspot.com/o/projects%2FactivityTracker_project.png?alt=media&token=5a451a76-753e-4d1c-863a-0d7a5ec12dcb' },
         { id: 3, title: 'Shopping List App', link: "https://anupdhoble.github.io/shopping_list/", description: (
