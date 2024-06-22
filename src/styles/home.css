@@ -80,7 +80,13 @@
     object-fit: contain;
     display: block;
     filter: invert(19%) sepia(43%) saturate(2202%) hue-rotate(182deg) brightness(91%) contrast(98%); /*Took help from tool :https://isotropic.co/tool/hex-color-to-css-filter/*/
+    transition: filter 0.5s ease-in-out;
 }
+.contactLogos:hover {
+    filter: none;
+    filter :drop-shadow(0 0 5px var(--color1));
+}
+
 
 @keyframes blink-caret {
 
