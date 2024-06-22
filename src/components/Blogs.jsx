@@ -237,6 +237,7 @@ const Blogs = ({ isLogin, showNotification }) => {
                 <div className="title-content-left">
                     <h1 className="blog-title-welcome">Welcome to TechTrendTalks!!</h1>
                     <p>Stay Ahead of the Curve: Dive into the Latest Tech Trends with TechTrend Talks!!!</p>
+                    <p>Login Now and start creating your blogs!!</p>
                     <p className="thoughts">I think of us as journalists; the medium we work in is blogging. <br />--Joshua Marshall</p>
                 </div>
                 <div className="title-content-right">
