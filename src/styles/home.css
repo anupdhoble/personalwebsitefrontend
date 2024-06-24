@@ -25,29 +25,7 @@
     width: 450px;
 }
 
-.contactbutton,
-.resumebutton {
-    margin: 5px auto 5px auto;
-    background-color: var(--color1);
-    color: var(--color5);
-    width: 8vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-    border-radius: 5px;
-    border: 2px solid var(--color1);
-    text-decoration: none;
-}
 
-.contactbutton:hover,
-.resumebutton:hover {
-    background-color: var(--color3);
-    color: var(--color1);
-    transition: 0.3s ease-in-out;
-    cursor: pointer;
-    border: 2px solid var(--color1);
-}
 
 .cursor {
     animation: blink-caret 0.75s step-end infinite;
@@ -131,12 +109,8 @@
         width: 300px;
     }
 
-    .contactbutton,
-    .resumebutton {
-        width: 30vw;
-        font-size: small;
-    }
-
+    
+    
     #contactsLinks a {
         width: 40px;
         /* Adjust width for smaller screens */

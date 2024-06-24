@@ -134,6 +134,7 @@ h1,p{
     flex-direction:row ;
     justify-content: center;
     align-items: center;
+    filter: invert(19%) sepia(43%) saturate(2202%) hue-rotate(182deg) brightness(91%) contrast(98%); 
 }
 .likeicon{
     /* background-image: url("../assets/img/like.png"); */

@@ -1,19 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/header.css'
 import logo from '../assets/img/logo.ico';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
 
 export default function Header({ isNavbarActive, toggleNavbar, closeTheMenu }) {
     let location = useLocation();
+    const [isDarkMode, setDarkMode] = useState(false);
     useEffect(() => {
         console.log(location.pathname);
-    }, [location]);
+        document.documentElement.className = 
+        isDarkMode ? 'darkMode' : 'lightMode';
+    }, [location, isDarkMode]);
     const navigate = useNavigate();
     const handleResume = () => {
         window.scrollTo(0, 0);
         navigate('/resume');
     }
+
+    const toggleDarkMode = (checked) => {
+        setDarkMode(checked);
+    };
     return (
         <>
             <nav className={`navbar ${isNavbarActive ? 'active' : ''}`}>
@@ -29,9 +37,16 @@ export default function Header({ isNavbarActive, toggleNavbar, closeTheMenu }) {
                     <li><Link className={`${location.pathname === "/contact" ? 'highlightNavoption' : ''}`} to="/contact" onClick={closeTheMenu}>Feedback</Link></li>
 
                 </ul>
+
                 <div onClick={handleResume} className="resumebutton">
                     <div>Resume</div>
                 </div>
+                <DarkModeSwitch
+                    className='darkModeToggle'
+                    checked={isDarkMode}
+                    onChange={toggleDarkMode}
+                    size={30}
+                />
                 <div className="toggle_btn" onClick={toggleNavbar}>
                     <i className="fa-solid fa-bars" style={{ color: '#05386b' }}></i>
                     <i className="fa-solid fa-xmark" style={{ color: '#05386b' }}></i>
