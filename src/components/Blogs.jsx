@@ -8,6 +8,10 @@ import likeicon from "../assets/img/like.png";
 import commenticon from "../assets/img/comment.png";
 import shareicon from "../assets/img/share.png";
 import send from "../assets/img/send.png";
+import aiLogo from "../assets/img/ailogo.gif";
+import geminiLogo from "../assets/img/geminiAi.png";
+
+
 
 
 const Blogs = ({ isLogin, showNotification }) => {
@@ -233,6 +237,14 @@ const Blogs = ({ isLogin, showNotification }) => {
     return (
         <>
             {auth.currentUser && auth.currentUser.email === "anupdhoble15@gmail.com" && <div className="admin-panel"><h1>Admin Account</h1><h3>All changes made are recorded as done by admin</h3></div>}
+            <div className="announcement title-content max-width-1">
+                <img src={aiLogo} alt="ai" width="75px" style={{borderRadius : '10px'}}/>
+                <div>
+                    New !! Presenting ReWrite AI , Gemini 1.5 Flash powered writing assistance . Create your AI-assisted blog today! !!
+                </div>
+                <img id="geminiLogo"src={geminiLogo} alt="gemini" width="150px"/>
+
+            </div>
             <div className="title-content max-width-1">
                 <div className="title-content-left">
                     <h1 className="blog-title-welcome">Welcome to TechTrendTalks!!</h1>

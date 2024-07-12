@@ -34,6 +34,7 @@ body{
 }
 
 
+
 .title-content{
     height: auto;
     background-color: var(--color2);
@@ -235,6 +236,21 @@ h1,p{
     justify-content: center;
     align-items: center;
     
+}
+.announcement{
+    padding: 10px;
+    color: var(--color5);
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.announcement div{
+    
+    margin: 10px;
+}
+#geminiLogo{
+    filter: contrast(1) brightness(1.5);
 }
 @media(max-width:992px) {
     .title-content{

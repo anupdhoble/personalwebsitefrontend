@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BlogController from "./BlogController";
-
+import { Bars } from "react-loader-spinner";
 import { auth, storage } from '../firebaseConfig';
 import { useNavigate } from "react-router-dom";
 import { getDownloadURL, ref, uploadBytes, deleteObject } from 'firebase/storage';
@@ -9,13 +9,19 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import "firebase/compat/storage";
 import { BeatLoader } from "react-spinners";
+import ailogo from "../assets/img/ailogo.gif";
+import "../styles/createblog.css";
+
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export default function CreateBlog({ isLogin }) {
-
-
+ // const yenv = require('yenv')
+    // const env = yenv('env.yaml', { env: 'production' })
+   
     const storageRef = ref(storage);
     const [imgurl, setImgurl] = useState("");
     const [file, setFile] = useState(null);
+    const [aiButtonClicked, setAiButtonClicked] = useState(false);
 
     const [title, setTitle] = useState("");
     const [blogContent, setBlogContent] = useState("");
@@ -24,7 +30,7 @@ export default function CreateBlog({ isLogin }) {
     const [imgloading, setImgloading] = useState(false);
 
     const handleChange = (e) => {
-        
+
         toast.info("Uploading please wait...");
         setImgloading(true);
         const selectedFile = e.target.files[0];
@@ -52,7 +58,7 @@ export default function CreateBlog({ isLogin }) {
 
             });
         }
-       
+
     }
     const handleSubmit = async () => {
         if (title !== "" && blogContent !== "") {
@@ -90,9 +96,23 @@ export default function CreateBlog({ isLogin }) {
             toast.error("Title or Content can't be empty");
         }
     };
+    const rewriteUsingAi = async () => {
+        setAiButtonClicked(true);
+        const genAi = new GoogleGenerativeAI("AIzaSyDZt_tcUt0GTPQ7__V7wqF6pkfSdjoPEtU");
+        const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const input = `Rewrite the following blog content for clarity and coherence in plain text add some points with proper facts. Do not use any markdown, HTML, or any other formatting. Provide the content as plain text only dont give any markdown , symbols etc for cosmetic effects:\n\n${blogContent}`;
+        await model.generateContent(input).then((output) => {
+            setBlogContent(output.response.text().replace(/[*#]/g, ""));
+        }).catch((error) => {
+            console.error("Error in rewriting:", error);
+            toast.error("ReWrite AI Error");
+        });
+        setAiButtonClicked(false);
+    }
 
     useEffect(() => {
         if (!isLogin) {
+
             navigate("/blogs/login");
             toast.warning("Login to create Blog");
         }
@@ -118,11 +138,30 @@ export default function CreateBlog({ isLogin }) {
                         <textarea placeholder="Start writing..." value={blogContent} id="" cols="30" rows="10" onChange={(event) => {
                             setBlogContent(event.target.value);
                         }}></textarea>
+                        <div className="aiButton" onClick={rewriteUsingAi}>
+                            {aiButtonClicked ? (
+                                <Bars
+                                    height="35"
+                                    width="35"
+                                    color="var(--color2)"
+                                    ariaLabel="bars-loading"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                    visible={true}
+                                />
+                            ) : (
+                                <>
+                                    <img src={ailogo} alt="ai" />
+                                    <div>ReWrite Using AI✨</div>
+                                </>
+                            )}
+                        </div>
                     </div>
+
                     {!imgloading &&
                         <div >
                             <label htmlFor="fileInput" id="imageUpload">Choose Image</label>
-                            <input style={{ display: "none" }} id="fileInput" type="file"  onChange={handleChange} accept="image/*" />
+                            <input style={{ display: "none" }} id="fileInput" type="file" onChange={handleChange} accept="image/*" />
                         </div>
                     }
                     {imgloading &&

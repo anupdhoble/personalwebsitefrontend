@@ -1,0 +1,23 @@
+.aiButton{
+    width: 200px;
+    background-color: white;
+    display: flex;
+    margin: auto;
+    border-radius: 10px;
+    align-items: center;
+    color: var(--color1);
+    transition: transform 0.2s;
+    
+}
+.aiButton:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.aiButton img{
+    width: 50px;
+    border-radius: 10px;
+}
+.aiButton div{
+    margin: auto;
+    
+}
