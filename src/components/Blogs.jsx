@@ -240,7 +240,7 @@ const Blogs = ({ isLogin, showNotification }) => {
             <div className="announcement title-content max-width-1">
                 <img src={aiLogo} alt="ai" width="75px" style={{borderRadius : '10px'}}/>
                 <div>
-                    New !! Presenting ReWrite AI , Gemini 1.5 Flash powered writing assistance . Create your AI-assisted blog today! !!
+                    New !! Presenting ReWrite AI , Gemini 1.5 Flash powered writing assistance . Login and create your AI-assisted blog today! !!
                 </div>
                 <img id="geminiLogo"src={geminiLogo} alt="gemini" width="150px"/>
 
