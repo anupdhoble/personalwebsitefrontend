@@ -21,3 +21,8 @@
 .elfsight-app-25670a45-fcbc-4429-a0e8-1e47a41ec179{
    font-size: larger;
 }
+.loading-spinner{
+    display: flex;
+    justify-content: center;
+    
+}
