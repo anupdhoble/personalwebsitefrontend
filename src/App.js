@@ -12,6 +12,7 @@ import Blogs from './components/Blogs';
 import Bloglogin from './components/Bloglogin';
 import CreateBlog from './components/CreateBlog';
 import Projects from './components/Projects';
+import Music from './components/Music';
 import POM from './components/POM';
 import Resume from './components/Resume';
 import { ToastContainer, toast } from 'react-toastify';
@@ -73,6 +74,7 @@ function App() {
           <Route path="/" element={<Home isLogin={isLogin} />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/music" element={<Music />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/blogs" element={<Blogs isLogin={isLogin} showNotification={showNotification} />} />

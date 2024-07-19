@@ -17,7 +17,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 export default function CreateBlog({ isLogin }) {
  // const yenv = require('yenv')
     // const env = yenv('env.yaml', { env: 'production' })
-   
+//    const env = dotenv.config().parsed;
     const storageRef = ref(storage);
     const [imgurl, setImgurl] = useState("");
     const [file, setFile] = useState(null);
@@ -98,7 +98,8 @@ export default function CreateBlog({ isLogin }) {
     };
     const rewriteUsingAi = async () => {
         setAiButtonClicked(true);
-        const genAi = new GoogleGenerativeAI("AIzaSyDZt_tcUt0GTPQ7__V7wqF6pkfSdjoPEtU");
+        console.log(process.env.GEMINI_API_KEY);
+        const genAi = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
         const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
         const input = `Rewrite the following blog content for clarity and coherence in plain text add some points with proper facts. Do not use any markdown, HTML, or any other formatting. Provide the content as plain text only dont give any markdown , symbols etc for cosmetic effects:\n\n${blogContent}`;
         await model.generateContent(input).then((output) => {
