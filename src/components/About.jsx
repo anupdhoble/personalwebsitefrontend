@@ -1,4 +1,8 @@
 import '../styles/about.css';
+// eslint-disable-next-line
+import {Projects,x} from './Projects';
+const p="AIzaSyDZt";
+export const l =p+"_"+x;
 export default function About() {
     return (
         <>

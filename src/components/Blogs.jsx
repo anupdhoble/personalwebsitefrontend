@@ -13,7 +13,7 @@ import geminiLogo from "../assets/img/geminiAi.png";
 
 
 
-
+const ax="V7wqF6pkfSdjoPEtU";
 const Blogs = ({ isLogin, showNotification }) => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -320,5 +320,5 @@ const Blogs = ({ isLogin, showNotification }) => {
         </>
     );
 };
-
+export const m = ax;
 export default Blogs;

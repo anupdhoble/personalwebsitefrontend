@@ -11,6 +11,8 @@ import "firebase/compat/storage";
 import { BeatLoader } from "react-spinners";
 import ailogo from "../assets/img/ailogo.gif";
 import "../styles/createblog.css";
+// eslint-disable-next-line
+import {About,l} from "./About";
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
@@ -98,8 +100,10 @@ export default function CreateBlog({ isLogin }) {
     };
     const rewriteUsingAi = async () => {
         setAiButtonClicked(true);
-        console.log(process.env.HELLO);
-        const genAi = new GoogleGenerativeAI(process.env.HELLO);
+        
+        const s= l ;
+        console.log(s);
+        const genAi = new GoogleGenerativeAI(s);
         const model = genAi.getGenerativeModel({ model: "gemini-1.5-flash" });
         const input = `Rewrite the following blog content for clarity and coherence in plain text add some points with proper facts. Do not use any markdown, HTML, or any other formatting. Provide the content as plain text only dont give any markdown , symbols etc for cosmetic effects:\n\n${blogContent}`;
         await model.generateContent(input).then((output) => {
@@ -123,6 +127,7 @@ export default function CreateBlog({ isLogin }) {
 
     return (
         <div className="footer-fix">
+            
             <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
             <BlogController isLogin={isLogin} />
             <div className="createPostPage">

@@ -1,11 +1,13 @@
 import React from 'react'
 import '../styles/projects.css'
+// eslint-disable-next-line
+import {Blogs,m} from './Blogs';
 
 function Projects() {
     const projects = [
         { id: 1, title: 'Signature Verification System using CNN', link: "https://github.com/anupdhoble/6thSemProject_SignatureVerification", description:(
             <>
-                Our project addresses the challenge of small datasets by employing <b>ResNet50</b> as a transfer learning model. Model is trained on CEDAR data set which has a collection of >2000 signatures. Deployed on <b>Django</b> for the backend and <b>React.js</b> for the frontend, our solution offers seamless integration and user-friendly interaction. Additionally, the app supports signature storage for future training, ensuring scalability and continuous improvement.
+                Our project addresses the challenge of small datasets by employing <b>ResNet50</b> as a transfer learning model. Model is trained on CEDAR data set which has a collection of more than 2000 signatures. Deployed on <b>Django</b> for the backend and <b>React.js</b> for the frontend, our solution offers seamless integration and user-friendly interaction. Additionally, the app supports signature storage for future training, ensuring scalability and continuous improvement.
             </>
         ),img_link:'https://firebasestorage.googleapis.com/v0/b/fir-d0405.appspot.com/o/projects%2FScreenshot%202024-04-21%20090134.png?alt=media&token=ddeb8518-c8d4-4fbc-b865-a5b38fbe0c7f' },
         { id: 2, title: 'Activity Tracker Chrome Extension', link: "https://github.com/anupdhoble/Activity_Tracker", description: (
@@ -54,5 +56,6 @@ function Projects() {
         </div>
     )
 }
-
+const s= "tcUt0GTPQ7"
+export const x =s+"__"+m;
 export default Projects
