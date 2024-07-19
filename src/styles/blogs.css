@@ -251,6 +251,7 @@ h1,p{
 }
 #geminiLogo{
     filter: contrast(1) brightness(1.5);
+    
 }
 @media(max-width:992px) {
     .title-content{
@@ -279,6 +280,9 @@ h1,p{
     .blogImage{
         width: 40vw;
         
+    }
+    #geminiLogo{
+        display: none;
     }
 }
 
