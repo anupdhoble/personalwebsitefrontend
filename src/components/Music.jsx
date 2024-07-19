@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import '../styles/music.css';
 
 export default function Music() {
