@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import '../styles/header.css'
 import logo from '../assets/img/logo.ico';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-
+import controllerlogo from '../assets/img/controllerlogo.png'
 
 export default function Header({ isNavbarActive, toggleNavbar, closeTheMenu }) {
     let location = useLocation();
@@ -35,6 +35,8 @@ export default function Header({ isNavbarActive, toggleNavbar, closeTheMenu }) {
                     <li><Link className={`${location.pathname === "/projects" ? 'highlightNavoption' : ''}`} to="/projects" onClick={closeTheMenu}>Projects</Link></li>
                     <li><Link className={`${location.pathname === "/about" ? 'highlightNavoption' : ''}`} to="/about" onClick={closeTheMenu}>About</Link></li>
                     <li><Link className={`${location.pathname === "/contact" ? 'highlightNavoption' : ''}`} to="/contact" onClick={closeTheMenu}>Feedback</Link></li>
+                    <a href='https://tictactoe.anupdhoble.tech/' target='blank'><img src={controllerlogo} class="headerlogo"  alt="controllerlogo" id="controllerlogo" /></a>
+                    
 
                 </ul>
 

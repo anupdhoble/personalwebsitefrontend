@@ -56,6 +56,12 @@
     transition: 0.3s ease-in-out;
    
 }
+.list_nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 0px;
+}
 
 #logo {
     width: 62px;
@@ -108,6 +114,11 @@
     transition: 0.3s ease-in-out;
     cursor: pointer;
     border: 2px solid var(--color1);
+}
+.headerlogo{
+    width: 70px;
+    filter: invert(19%) sepia(43%) saturate(2202%) hue-rotate(182deg) brightness(91%) contrast(98%);
+    padding: 0px 15px;
 }
 
 

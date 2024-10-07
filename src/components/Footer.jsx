@@ -5,7 +5,7 @@ export default function Footer({ isNavbarActive, toggleNavbar }) {
     <>
       <div className="wrapper">
         <div className="content">
-          {/* Your main content goes here */}
+          
         </div>
         <footer className={`footer ${isNavbarActive ? 'active' : ''}`}>
           <div className="hr-nav m-auto">
