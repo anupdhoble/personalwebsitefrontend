@@ -28,11 +28,12 @@ const Blogs = ({ isLogin, showNotification }) => {
         setComment("");
         setBlogcomments({});
         fetchAllBlogs();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        
     }, []);
     
 
-    //for share button
+    //for share button last update Dt: 18-7-2021
+    //Note for future : find how to share img with the link  
     function shareABlog(blogtitle, blogauthor,blogid) {
         // Get the current URL
         var blogurl = `/shareblog/${blogid}`;
